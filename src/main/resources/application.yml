@@ -1,0 +1,35 @@
+server:
+  port: 1991
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+  jackson:
+    time-zone: Asia/Shanghai
+    date format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      write-dates-as-timestamps: false
+web:
+  resources:
+    static-locations: classpath:static/,file:static/
+
+mybatis-plus:
+  type-aliases-package: com.blogsite.entity
+  configuration:
+    call-setters-on-nulls: false
+    auto-mapping-behavior: full
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  global-config:
+    field-strategy: 0
+    banner: true
+    db-config:
+      id-type: uuid
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+logging:
+  level:
+    root: info
+
